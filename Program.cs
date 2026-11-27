@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using OrderManagementAPI.Models;
 
 namespace OrderManagementAPI
 {
@@ -7,9 +10,15 @@ namespace OrderManagementAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var connectionString = builder.Configuration.GetConnectionString("OrdersDB") ?? "Data Source=OrdersDB.db";
+
+
+
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddSqlite<AppDbContext>(connectionString);
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
