@@ -2,10 +2,10 @@
 {
     public class Customer : User
     {
-        public string address { get; set; }
-        public Customer(string username, string password, string address) : base(username, password)
+        public string Address { get; set; }
+        public Customer(string username, string password, string address, string role) : base(username, password, role)
         {
-            this.address = address;
+            this.Address = address;
         }
     }
 }

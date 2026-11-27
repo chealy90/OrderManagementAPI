@@ -6,7 +6,9 @@
         public string DeliveryAddress { get; set; }
         public bool IsDelivered { get; set; }
         public double BaseDeliveryCost { get; set; }
-        public Dictionary<Item, int> OrderItems { get; set; } = new Dictionary<Item, int>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem >();
+        public ICollection<Item> Items { get; set; } = new List<Item>();
+
         public Order(int orderId, string deliveryAddress, bool isDelivered)
         {
             OrderId = orderId;
@@ -36,5 +38,6 @@
             {
                 return this.BaseDeliveryCost;
             }
+        }
     }
 }

@@ -1,5 +1,6 @@
-using OrderManagementAPI.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using OrderManagementAPI.Models;
 
 namespace OrderManagementAPI
 {
@@ -9,18 +10,15 @@ namespace OrderManagementAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            Customer cust1 = new Customer("cust1", "password1", "123 Main St");
-            StoreAssistant sa1 = new StoreAssistant("sa1", "password2", "Electronics");
-            DeliveryDriver dd1 = new DeliveryDriver("dd1", "password3", "ABC123");
+            var connectionString = builder.Configuration.GetConnectionString("OrdersDB") ?? "Data Source=OrdersDB.db";
 
-            Debug.WriteLine(cust1.username);
-            Debug.WriteLine(sa1.department);
-            Debug.WriteLine(dd1.licensePlate);
 
 
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddSqlite<AppDbContext>(connectionString);
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 

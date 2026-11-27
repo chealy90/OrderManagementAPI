@@ -1,18 +1,22 @@
 ﻿namespace OrderManagementAPI.Models
 {
-    public abstract class User
+    public class User
     {
         //public 
-        public int? Id { get;}
-        public string username { get; }
+        public int UserId { get; set; }
+        public string Username { get; }
+        public string Role { get; set; } = "user";
 
         //private
-        private string password { get; set; }
+        private string Password { get; set; }
 
-        public User(string username, string password)
+        public User() { }
+
+        public User(string username, string password, string role)
         {
-            this.username = username;
-            this.password = password;
+            this.Username = username;
+            this.Password = password;
+            this.Role = role;
             //TODO: hash password
         }
         

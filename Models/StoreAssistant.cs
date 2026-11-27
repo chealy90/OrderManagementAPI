@@ -2,10 +2,10 @@
 {
     public class StoreAssistant : User
     {
-        public string department { get; set; }
-        public StoreAssistant(string username, string password, string department) : base(username, password)
+        public string Department { get; set; }
+        public StoreAssistant(string username, string password, string department, string role) : base(username, password, role)
         {
-            this.department = department;
+            this.Department = department;
         }
     }
 }

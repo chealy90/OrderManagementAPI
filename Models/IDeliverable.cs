@@ -6,7 +6,7 @@
         public string DeliveryAddress { get; set; }
         public bool IsDelivered { get; set; }
         public double BaseDeliveryCost { get; set; }
-        public Dictionary<Item, int> OrderItems { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
 
         abstract double CalculateDeliveryCost();
         
