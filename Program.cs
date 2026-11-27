@@ -1,3 +1,5 @@
+using OrderManagementAPI.Models;
+using System.Diagnostics;
 
 namespace OrderManagementAPI
 {
@@ -6,6 +8,15 @@ namespace OrderManagementAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            Customer cust1 = new Customer("cust1", "password1", "123 Main St");
+            StoreAssistant sa1 = new StoreAssistant("sa1", "password2", "Electronics");
+            DeliveryDriver dd1 = new DeliveryDriver("dd1", "password3", "ABC123");
+
+            Debug.WriteLine(cust1.username);
+            Debug.WriteLine(sa1.department);
+            Debug.WriteLine(dd1.licensePlate);
+
 
             // Add services to the container.
 
